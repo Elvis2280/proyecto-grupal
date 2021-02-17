@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class main {
+public class Main {
 
     public static String datos() { // Funcion para la toma de datos
         Scanner sc = new Scanner(System.in);
