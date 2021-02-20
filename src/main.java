@@ -4,7 +4,7 @@ import java.util.*;
 
 public class main {
 
-    public static String datos() { // Funcion para la toma de datos
+    public static String datos() { // Funcion para la toma de datos #dato es el nombre
         Scanner sc = new Scanner(System.in);
 
         String result = "";
@@ -23,7 +23,7 @@ public class main {
     public static String pedido() { // funcion con un map como menu de la aplicacion
         Scanner sc = new Scanner(System.in);
         int orden;
-        HashMap<Integer, String> food = new HashMap<Integer, String>();
+        HashMap<Integer, String> food = new HashMap<Integer, String>(); // como hacer el map 
         food.put(1, "Sushi sakana");
         food.put(2, "Ramen estilo Kioto");
         food.put(3, "Onigiri oishii");
@@ -82,7 +82,7 @@ public class main {
 
                     do {
                         System.out.println(
-                                "\n Menu\n 1. Cambiar la contraseña \n 2. Llenar información \n 3. Pedido \n 4. Salir");
+                                "\n Menu\n 1. Cambiar la contraseña \n 2. Llenar información \n 3. Pedido \n 4. Salir \n");  // Menu
                         option = sc.nextInt();
 
                         if (option == 1) {
