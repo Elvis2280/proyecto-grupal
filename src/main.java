@@ -4,7 +4,7 @@ import java.util.*;
 
 public class main {
 
-    public static String datos() { // Funcion para la toma de datos #dato es el nombre
+    public static String datos() { // Funcion para la toma de datos -----dato es el nombre de la funcion----
         Scanner sc = new Scanner(System.in);
 
         String result = "";
@@ -23,7 +23,7 @@ public class main {
     public static String pedido() { // funcion con un map como menu de la aplicacion
         Scanner sc = new Scanner(System.in);
         int orden;
-        HashMap<Integer, String> food = new HashMap<Integer, String>(); // como hacer el map 
+        HashMap<Integer, String> food = new HashMap<Integer, String>(); // se definio el map con valores de enteros y cadenas (el map tiene un nombre de food)
         food.put(1, "Sushi sakana");
         food.put(2, "Ramen estilo Kioto");
         food.put(3, "Onigiri oishii");
@@ -43,13 +43,13 @@ public class main {
     }
 
     public static void main(String[] args) {
-        int passwordInput, option, opt2, password;
-        String userInput, usuarioActual, datos, pedido = "";
+        int option, opt2;
+        String userInput, passwordInput, password, usuarioActual, datos, pedido = "";
 
         // datos de usuario y passwords
-        List<Integer> passwords = new ArrayList<Integer>();
+        List<String> passwords = new ArrayList<String>();
         List<String> users = new ArrayList<String>();
-        passwords.add(2020);
+        passwords.add("2020");
         users.add("pedro2001");
 
         Scanner sc = new Scanner(System.in);
@@ -63,7 +63,7 @@ public class main {
                 System.out.println("Ingrese el nombre de usuario para su cuenta");
                 users.add(sc.nextLine());
                 System.out.println("Ingrese su contraseña para la cuenta");
-                passwords.add(sc.nextInt());
+                passwords.add(sc.nextLine());
 
                 System.out.println("Cuenta creada con exito!!");
 
@@ -71,42 +71,56 @@ public class main {
                 System.out.println("\n Ingrese su nombre de Usuario");
                 userInput = sc.nextLine();
                 System.out.println("Ingrese su Contraseña");
-                passwordInput = sc.nextInt();
+                passwordInput = sc.nextLine();
 
                 usuarioActual = userInput;
 
                 if (users.contains(userInput) && passwords.contains(passwordInput)) {
 
-                    System.out.println("Bienvenido al Sistema" + " " + usuarioActual); // caso el usuario ingresa al
+                    System.out.println("\n\nBienvenido al Sistema" + " " + usuarioActual); // caso el usuario ingresa al
                                                                                        // sistema
 
                     do {
                         System.out.println(
                                 "\n Menu\n 1. Cambiar la contraseña \n 2. Llenar información \n 3. Pedido \n 4. Salir \n");  // Menu
                         option = sc.nextInt();
+                        sc.nextLine();
+                        switch (option){
+                            case 1: 
+                                System.out.println("Ingrese su nueva contraseña: ");
+                                password = sc.nextLine();
+                                                 
+                                for(int i = 0; i <= passwords.size()-1; i++ ){
 
-                        if (option == 1) {
-                            System.out.println("Ingrese su nueva contraseña");
-                            password = sc.nextInt();
-                            System.out.println(
-                                    "\n Su contraseña a sido actualizada a: " + password + " " + "con exito!!");
-                        } else if (option == 2) {
-                            datos = datos();
-                            System.out.println("\n Sus datos son: \n" + datos);
-                        } else if (option == 3) {
-                            pedido = pedido();
-                            System.out.println("\n Ha seleccionado: \n" + pedido);
-                        } else if (option == 4) {
-                            if (pedido.equals("")) {
-                                System.out.println("Esperamos verte pronto. cierre de sesion a las: " + horaPedido());
-                            } else {
-                                System.out.println("\n Su pedido de: " + pedido + " se realizo con exito a la hora: "
-                                        + horaPedido() + " El mismo sera enviado a domicilio, Disfrute su compra :D");
+                                    if (passwords.get(i).equals(passwordInput) ){
+                                        passwords.set(i, password);
+                                    }
+                                }
+                                System.out.println(
+                                                "\n Su contraseña a sido actualizada a: " + password + " " + "con exito!!");
+                                System.out.println(passwords);
+                                break;
+                            case 2:
+                                datos = datos();
+                                System.out.println("\n Sus datos son: \n" + datos);
+                                break;
+                            case 3:
+                                pedido = pedido();
+                                System.out.println("\n Ha seleccionado: \n" + pedido);
+                                break;
+                            case 4:
+                                if (pedido.equals("")) {
+                                    System.out.println("Esperamos verte pronto. cierre de sesion a las: " + horaPedido());
+                                } else {
+                                    System.out.println("\n Su pedido de: " + pedido + " se realizo con exito a la hora: "
+                                            + horaPedido() + " El mismo sera enviado a domicilio, Disfrute su compra :D");
+                                }
+                                break;
+                            default:
+                                System.out.println("Ingrese una opcion valida");
+                                break;
                             }
-
-                        } else {
-                            System.out.println("Ingrese una opcion valida");
-                        }
+                        
                     } while (option != 4);
 
                 } else if (users.contains(userInput)) {
